@@ -105,6 +105,11 @@ gulp.task('fonts', () => {
     .pipe(gulp.dest('dist/fonts'));
 });
 
+gulp.task('libs', ['bower'], () => {
+    return gulp.src('app/lib/**/*')
+        .pipe(gulp.dest('dist/lib'));
+});
+
 gulp.task('extras', () => {
   return gulp.src([
     'app/*.*',
@@ -131,12 +136,14 @@ gulp.task('serve', ['bower:fonts', 'styles', 'tsc', 'scripts', 'fonts'], () => {
   gulp.watch([
     'app/*.html',
     'app/images/**/*',
-    '.tmp/fonts/**/*'
+    '.tmp/fonts/**/*',
+    'tsc/src/**/*'
   ]).on('change', reload);
 
   gulp.watch('app/styles/**/*.css', ['styles']);
   gulp.watch('app/scripts/**/*.js', ['scripts']);
   gulp.watch('app/fonts/**/*', ['fonts']);
+  gulp.watch('tsc/src/**/*', ['tsc']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
 
@@ -178,7 +185,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['lint', 'html', 'bower:fonts', 'tsc', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['lint', 'html', 'bower:fonts', 'tsc', 'images', 'fonts', 'extras', 'libs'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
