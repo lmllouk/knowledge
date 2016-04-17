@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>mock</title>
     <link rel="stylesheet" href="./lib/materialize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./styles/common.css">
     <script src="./lib/jquery.js"></script>
     <script src="./lib/materialize.js"></script>
+    <script>$(function() {$(".button-collapse").sideNav();})</script>
   </head>
   <body>
       <header>
           <nav>
-              <div class="nav-wrapper">
-                  <a href="" class="brand-logo">Logo</a>
-                  <ul id="nav-mobile" class="right hide-on-med-and-down">
-                      <li>新規登録</li>
-                  </ul>
-                  <ul class="side-nav" id="nav-mobile" style="transform: translateX(-100%);">
-                      <li>新規登録</li>
-                  </ul>
-                  <a href="#" class="button-collapse" data-activates="nav-mobile">
-                      <i class="material-icons">menu</i>
-                  </a>
-              </div>
-          </nav>
+            <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Logo</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#">新規登録</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="#">新規登録</a></li>
+            </ul>
+            </div>
+        </nav>
       </header>
       <div class="container">
           <form action="./menu.html" method="GET">
