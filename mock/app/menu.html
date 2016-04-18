@@ -7,22 +7,54 @@
         <link rel="stylesheet" href="./lib/materialize.css">
         <link rel="stylesheet" href="./styles/common.css">
         <link rel="stylesheet" href="./styles/menu.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="./lib/jquery.js"></script>
         <script src="./lib/materialize.js"></script>
+        <script>
+            $(function() {
+                $(".dropdown-button").dropdown();
+            })
+        </script>
     </head>
     <body>
       <header>
           <nav>
               <div class="nav-wrapper">
                   <a href="" class="brand-logo">Logo</a>
+                  <ul id="dropdown-user" class="dropdown-content">
+                      <li><a>ユーザ名</a></li>
+                      <li><a>ルーム一覧</a></li>
+                      <li><a>ログアウト</a></li>
+                  </ul>
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
-                      <li>ユーザ名</li>
-                      <li>ログアウト</li>
+                      <li class="dropdown-button" data-activates="dropdown-user">ユーザ名<i class="material-icons right">arrow_drop_down</i></li>
                   </ul>
               </div>
           </nav>
       </header>
       <div class="container">
+          <div class="card">
+            <div class="card-content">
+                <span class="card-title">ルーム1 - <a href="#">名前</a></span>
+                <p>メッセージ</p>
+                <span class="card-footer">2016/4/18 10:20</span>
+            </div>
+            <div class="card-action">
+                <a>未読</a>
+                <a>返信</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+                <span class="card-title">ルーム2 - <a href="#">名前</a></span>
+                <p>メッセージ</p>
+                <span class="card-footer">2016/4/18 10:20</span>
+            </div>
+            <div class="card-action">
+                <a>未読</a>
+                <a>返信</a>
+            </div>
+          </div>
       </div>
        <footer>
         <div class="right-align">
