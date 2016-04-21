@@ -25,8 +25,9 @@
     "Microsoft.Extensions.Configuration.Json": "1.0.0-rc1-final",
     "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final"
+    "Serilog.Extensions.Logging": "1.0.0-rc1-final-10092 ",
+    "Serilog.Sinks.Literate": "2.0.0-beta-21",
+    "Glimpse": "2.0.0-beta1"
   },
 
   "commands": {

@@ -7,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using KnowledgeBack.Models;
 //using KnowledgeBack.Services;
+using Glimpse;
+using Serilog;
 
 namespace KnowledgeBack
 {
@@ -24,6 +26,10 @@ namespace KnowledgeBack
                 // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
                 builder.AddUserSecrets();
             }
+            
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.LiterateConsole()
+                .CreateLogger();
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -42,6 +48,7 @@ namespace KnowledgeBack
                 .AddDbContext<KnowledgeDbContext>(options =>
                     options.UseSqlite(Configuration["Data:DefaultConnection:ConnectionString"]));
 
+            services.AddGlimpse();
             services.AddMvc();
 
             // Add application services.
@@ -52,8 +59,9 @@ namespace KnowledgeBack
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+            app.UseGlimpse();
+            
+            loggerFactory.AddSerilog();
 
             if (env.IsDevelopment())
             {
